@@ -1,5 +1,10 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
+
+const PRODUCTS = [
+  { id: 1, title: 'Product 1' },
+  { id: 2, title: 'Product 2' },
+  { id: 3, title: 'Product 3' }
+]
 
 export default function Products() {
   return (
@@ -7,9 +12,17 @@ export default function Products() {
     <>
       <h1>Products</h1>
       <ul>
-        <li>Product 1</li>
-        <li>Product 2</li>
-        <li>Product 3</li>
+        {PRODUCTS.map(item => {
+          return (
+            <li key={item.id}>
+              <Link to={`/products/${item.id}`}>
+                {item.title}
+              </Link>
+            </li>
+          )
+        })}
+
+
       </ul>
       <p>
         Go to <Link to={'/'}>Home</Link>
